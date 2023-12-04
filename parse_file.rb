@@ -13,6 +13,7 @@ class ExternalCodeFinder < Parser::AST::Processor
 
   def on_send(node)
     if node.children[0] == nil && @@commands.include?(node.children[1])
+      # TODO properly extract the argument of the relevant commands ('children' might contain another AST)
       @required << node.children[2].children[0]
     end
     super
@@ -26,8 +27,9 @@ def find_external_code (path)
   visitor = ExternalCodeFinder.new
   visitor.process(ast)
 
-  return_hash = {path.to_sym => visitor.required}
-  p return_hash
+  unless visitor.required.empty?
+    {path.to_sym => visitor.required}
+  end
 end
 
-find_external_code(ARGV[0])
+# find_external_code(ARGV[0])

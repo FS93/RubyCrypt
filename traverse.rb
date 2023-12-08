@@ -4,8 +4,6 @@ require_relative './parse_file.rb'
 require 'ruby-progressbar'
 require 'pathname'
 
-DIRECTORY = '/Daten/Code/gitlab/app'
-SCAN_DIR = "/Daten/Code/RubyCrypt/scans/"
 class Hash
   def store_join(another_hash)
     another_hash.each do |key, value|
@@ -20,12 +18,15 @@ class Hash
 end
 
 
-def traverse (directory_path = DIRECTORY)
+def traverse (directory_path)
 
   data = {}
   errors = {}
 
-  progressbar = ProgressBar.create(:total => 5151, :throttle_rate => 5)
+  number_of_ruby_files = Dir.glob("**/*.rb", File::FNM_DOTMATCH, base: directory_path).length
+  puts "Ruby Files to analyze: " + number_of_ruby_files.to_s
+
+  progressbar = ProgressBar.create(:total => number_of_ruby_files, :throttle_rate => 2)
 
   # traverse directory
   Find.find(directory_path) do |path|
@@ -45,25 +46,3 @@ def traverse (directory_path = DIRECTORY)
   # return
   return data, errors
 end
-
-def export_data (data, errors, scan_dir = SCAN_DIR)
-
-  timestamp = Time.now.strftime('%Y-%m-%dT%H-%M-%S')
-
-  # create directories
-  scan_dir_path = Pathname.new(scan_dir)
-  scan_dir_path.mkdir unless scan_dir_path.exist?
-  scan_dir_path.join(timestamp).mkdir
-
-  # write marshalled data to files data & errors
-  File.open(scan_dir_path.join(timestamp,'data'), 'wb') do |file|
-    file.write(Marshal.dump(data))
-  end
-
-  File.open(scan_dir_path.join(timestamp,'errors'), 'wb') do |file|
-    file.write(Marshal.dump(errors))
-  end
-end
-
-data, errors = traverse
-export_data(data, errors)

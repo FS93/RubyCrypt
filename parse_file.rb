@@ -20,6 +20,16 @@ class ExternalCodeFinder < Parser::AST::Processor
   end
 end
 
+class Hash
+  def store_append(key, value)
+    if self.has_key? key
+      self[key] = self[key].to_a.append(value)
+    else
+      self.store(key, [value])
+    end
+  end
+end
+
 def find_external_code (path)
   code = File.read(path)
   ast = Parser::CurrentRuby.parse(code)
@@ -27,9 +37,11 @@ def find_external_code (path)
   visitor = ExternalCodeFinder.new
   visitor.process(ast)
 
+  return_hash = {}
   unless visitor.required.empty?
-    {path.to_sym => visitor.required}
+    visitor.required.each do |requirement|
+      return_hash.store_append(requirement, path)
+    end
+    return_hash
   end
 end
-
-# find_external_code(ARGV[0])

@@ -57,3 +57,6 @@ build-iPhoneSimulator/
 
 # IDE Settings
 .idea
+
+# Data Directory
+scans

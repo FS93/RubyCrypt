@@ -55,4 +55,3 @@ def why(gem_names)
   end
   $relevant_paths
 end
-# why(ARGV)

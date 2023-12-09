@@ -24,9 +24,13 @@ def traverse (directory_path)
   errors = {}
 
   number_of_ruby_files = Dir.glob("**/*.rb", File::FNM_DOTMATCH, base: directory_path).length
-  puts "Ruby Files to analyze: " + number_of_ruby_files.to_s
+  puts "\nRuby Files to analyze: " + number_of_ruby_files.to_s + "\n\n"
 
-  progressbar = ProgressBar.create(:total => number_of_ruby_files, :throttle_rate => 2)
+  progressbar = ProgressBar.create(:format         => "%a %b\u{15E7}%i %p%% %t",
+                                   :progress_mark  => ' ',
+                                   :remainder_mark => "\u{FF65}",
+                                   :total => number_of_ruby_files,
+                                   :throttle_rate => 0.2)
 
   # traverse directory
   Find.find(directory_path) do |path|
@@ -38,8 +42,9 @@ def traverse (directory_path)
         data.store_join(find_external_code(path))
       end
     rescue Exception => ex
-      errors.store_join({File.expand_path(path)=> [ex.class]})
+      errors.store_join({ex.class => [File.expand_path(path)]})
     end
+
     progressbar.increment
   end
 

@@ -31,13 +31,14 @@ class Hash
 end
 
 def find_external_code (path)
-  code = File.read(path)
-  ast = Parser::CurrentRuby.parse(code)
+  # TODO parse_file puts diagnostics to STDERR - redirect them to a diagnostics file (with Ruby logger?)
+  ast = Parser::CurrentRuby.parse_file(path)
 
   visitor = ExternalCodeFinder.new
   visitor.process(ast)
 
   return_hash = {}
+
   unless visitor.required.empty?
     visitor.required.each do |requirement|
       return_hash.store_append(requirement, path)

@@ -13,8 +13,8 @@ module Export
     timestamp_subdir_path.mkdir unless timestamp_subdir_path.exist?
 
     # JSON export
-    File.open(timestamp_subdir_path.join(filename + ".json"), 'wb') do |file|
-      file.write(data.to_json)
+    File.open(timestamp_subdir_path.join(filename + ".json"), 'w') do |file|
+      file.write(JSON.pretty_generate(data))
     end
 
     # Binary export

@@ -11,7 +11,7 @@ class Analyzer
 
   SCAN_DIRECTORY = Dir.pwd # current directory
   EXPORT_DIR = "/Daten/Code/RubyCrypt/scans/"
-  CRYPTO_GEMS = %w[openssl bcrypt attr_jncrypted lockbox rbnacl scrypt strongox cose encryptor]
+  CRYPTO_GEMS = %w[openssl bcrypt attr_jncrypted lockbox rbnacl scrypt strongox cose encryptor digest]
 
   attr_reader :scan_dir, :export_dir, :gems
 

@@ -2,6 +2,12 @@
 Scanner for required gems & their Reverse Dependencies in a Ruby Project
 with a bundler Gemfile
 
+# Installation
+```bash
+bundle config set deployment true
+bundle install
+```
+
 ## Usage
 1. Navigate to the root directory of the Ruby project (which includes the `Gemfile`)
 2. Run 

@@ -8,7 +8,27 @@ include Export
 
 SCAN_DIRECTORY = Dir.pwd # current directory
 EXPORT_DIR = "/Daten/Code/RubyCrypt/scans/"
-CRYPTO_GEMS = %w[openssl bcrypt attr_encrypted lockbox rbnacl scrypt strongox cose encryptor digest net-ssh ssh_data sshkey]
+CRYPTO_GEMS = %w[
+	attr_encrypted
+	bcrypt
+	cose
+	doorkeeper
+	encryptor
+	ed25519
+	json-jwt
+	lockbox 
+	net-ssh 
+	net-scp
+	oauth
+	oauth2
+	openssl
+	openssl-signature-algorithm
+	rbnacl 
+	scrypt 
+	ssh_data 
+	sshkey
+]
+
 class Analyzer
 
   def initialize(scan_dir = SCAN_DIRECTORY, export_dir = EXPORT_DIR, *gems)

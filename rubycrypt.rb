@@ -26,7 +26,6 @@ CRYPTO_GEMS = %w[
 	rbnacl 
 	scrypt 
 	ssh_data 
-	sshkey
 ]
 
 class Analyzer

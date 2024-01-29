@@ -50,7 +50,7 @@ def why(gem_names)
   $relevant_paths = []
 
   gem_names.each do |gem|
-    spec = find_one_spec_in_set(spec_set, gem)
+    spec = find_one_spec_in_set(spec_set, gem) # extracts gem from spec_set
     traverse_specs(spec_set, spec)
   end
   $relevant_paths

@@ -13,7 +13,6 @@ class ExternalCodeFinder < Parser::AST::Processor
 
   def on_send(node)
     if node.children[0] == nil && @@commands.include?(node.children[1])
-      # TODO properly extract the argument of the relevant commands ('children' might contain another AST)
       @required << node.children[2].children[0]
     end
     super
@@ -31,7 +30,6 @@ class Hash
 end
 
 def find_external_code (path)
-  # TODO parse_file puts diagnostics to STDERR - redirect them to a diagnostics file (with Ruby logger?)
   ast = Parser::CurrentRuby.parse_file(path)
 
   visitor = ExternalCodeFinder.new

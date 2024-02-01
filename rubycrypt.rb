@@ -22,9 +22,9 @@ CRYPTO_GEMS = %w[
 	oauth
 	oauth2
 	openssl
-	openssl-signature-algorithm
-	rbnacl 
-	scrypt 
+	openssl-signature_algorithm
+  rbnacl
+	scrypt
 	ssh_data 
 ]
 

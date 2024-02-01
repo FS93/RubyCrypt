@@ -1,8 +1,8 @@
 # RubyCrypt
-Scanner for required gems & their Reverse Dependencies in a Ruby Project
+Scanner for required gems & their reverse dependencies in a Ruby Project
 with a bundler Gemfile
 
-# Installation
+## Installation
 ```bash
 bundle config set deployment true
 bundle install
@@ -17,16 +17,29 @@ bundle exec ruby PATH_TO/rubycrypt.rb [SCAN_DIR] [EXPORT_DIR] [CRYPTO_GEMS]
 - parameters are optional, default values can be configured in `rubycrypt.rb`
 - outputs will be written to `EXPORT_DIR/YYYY-MM-DDTHH-MM-SS` in JSON and Binary Format
 
-### Analysis of output in `irb`
-1. Navigate to the output directory
+### Example
+```bash
+bundle exec ruby PATH_TO/rubycrypt.rb ./lib /home/user/Desktop openssl ed25519 lockbox
+```
+
+
+### Analysis of output
+1. Navigate to the RubyCrypt directory
 2. run `irb`
-3. `require 'PATH_TO/load_marshalled_data.rb'`
-4. global variables 
+3. `load 'analysis.rb'`
+4. Enter timestamp of output directory
+5. Global variables for analysis are 
 ```ruby
+$config
+$dependency_chains
 $requirements
 $filtered_requirements
 $errors
 $not_in_vendor_directory
 ```
-contain the output
 
+To just output basic statistics about the output, run 
+```bash
+ruby analysis.rb
+```
+from the RubyCrypt directory and enter the output directories timestamp.

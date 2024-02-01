@@ -2,7 +2,7 @@
 require 'parser/current'
 
 class ExternalCodeFinder < Parser::AST::Processor
-  @@commands = [:require, :require_relative, :load, :autoload]
+  @@commands = [:require, :require_relative, :load]
 
   def initialize
     @required = []
@@ -12,7 +12,11 @@ class ExternalCodeFinder < Parser::AST::Processor
   attr_accessor :required, :path
 
   def on_send(node)
-    if node.children[0] == nil && @@commands.include?(node.children[1])
+    # handle autoload
+    if node.children[0] == nil && node.children[1] == :autoload
+      @required << node.children[3].children[0]
+      # handle other 3 loading commands
+    elsif node.children[0] == nil && @@commands.include?(node.children[1])
       @required << node.children[2].children[0]
     end
     super

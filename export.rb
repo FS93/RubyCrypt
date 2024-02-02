@@ -19,7 +19,7 @@ module Export
 
   def create_directories(export_dir,timestamp)
     # create directories
-    export_dir_path = Pathname.new(export_dir)
+    export_dir_path = Pathname.new(export_dir).join("scans")
     export_dir_with_timestamp_path = export_dir_path.join(timestamp)
 
     export_dir_path.mkdir unless export_dir_path.exist?

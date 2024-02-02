@@ -35,5 +35,5 @@ puts "REQUIREMENTS".red
 puts "\n"
 puts "No. of distinct loading arguments:\t\t " + $requirements.size.to_s
 puts "|----which are gems from dependency chains:\t " + $filtered_requirements.size.to_s
-puts "\t|----which are not in vendor/bundle:\t " + $not_in_vendor_directory.size.to_s
+puts "\t|----which are not from gem source code\t " + $not_in_vendor_directory.size.to_s
 puts "\n\n"

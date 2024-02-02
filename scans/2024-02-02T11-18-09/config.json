@@ -1,0 +1,22 @@
+{
+  "SCAN_DIR": "/Daten/Schreibtisch/gitlab-foss",
+  "CRYPTO_GEMS": [
+    "attr_encrypted",
+    "bcrypt",
+    "cose",
+    "doorkeeper",
+    "encryptor",
+    "ed25519",
+    "json-jwt",
+    "lockbox",
+    "net-ssh",
+    "net-scp",
+    "oauth",
+    "oauth2",
+    "openssl",
+    "openssl-signature_algorithm",
+    "rbnacl",
+    "scrypt",
+    "ssh_data"
+  ]
+}

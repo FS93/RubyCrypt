@@ -1,0 +1,34 @@
+{
+  "devise/orm/active_record": [
+    "/Daten/Schreibtisch/gitlab-foss/config/initializers/8_devise.rb"
+  ],
+  "openssl": [
+    "/Daten/Schreibtisch/gitlab-foss/config/initializers/excon.rb",
+    "/Daten/Schreibtisch/gitlab-foss/lib/gitlab/ci/ansi2json/state.rb",
+    "/Daten/Schreibtisch/gitlab-foss/lib/gitlab/email/smime/signer.rb",
+    "/Daten/Schreibtisch/gitlab-foss/lib/gitlab/x509/commit.rb",
+    "/Daten/Schreibtisch/gitlab-foss/lib/gitlab/x509/signature.rb",
+    "/Daten/Schreibtisch/gitlab-foss/lib/gitlab/x509/tag.rb",
+    "/Daten/Schreibtisch/gitlab-foss/lib/omni_auth/strategies/jwt.rb"
+  ],
+  "rack/oauth2": [
+    "/Daten/Schreibtisch/gitlab-foss/lib/api/api_guard.rb"
+  ],
+  "ed25519": [
+    "/Daten/Schreibtisch/gitlab-foss/lib/gitlab/ssh/signature.rb"
+  ],
+  "omniauth-oauth2": [
+    "/Daten/Schreibtisch/gitlab-foss/lib/omni_auth/strategies/bitbucket.rb"
+  ],
+  "../../config/initializers/doorkeeper": [
+    "/Daten/Schreibtisch/gitlab-foss/spec/initializers/doorkeeper_spec.rb"
+  ],
+  "webauthn/fake_client": [
+    "/Daten/Schreibtisch/gitlab-foss/spec/services/webauthn/authenticate_service_spec.rb",
+    "/Daten/Schreibtisch/gitlab-foss/spec/services/webauthn/register_service_spec.rb",
+    "/Daten/Schreibtisch/gitlab-foss/spec/support/helpers/fake_webauthn_device.rb"
+  ],
+  "devise_helpers": [
+    "/Daten/Schreibtisch/gitlab-foss/spec/support/helpers/login_helpers.rb"
+  ]
+}
